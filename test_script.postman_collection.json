@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "98fd4f4d-898a-4740-bcb5-5058c911bea5",
-		"name": "AMP Demo",
+		"name": "AMP Demo Finance Portfolio",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -209,7 +209,13 @@
 						"id": "031685c4-61ab-4da4-842d-79142f4f19cb",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
-							"postman.setEnvironmentVariable(\"apiId\", jsonData.list[0].id);"
+							"  for (var item in jsonData.list) {",
+							"    if (jsonData.list[item].name == \"UserAPI\"){",
+							"        postman.setEnvironmentVariable(\"apiId\", jsonData.list[item].id);",
+							"      break;",
+							"    }",
+							"  }",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -604,7 +610,7 @@
 		},
 		{
 			"key": "userID",
-			"value": "19",
+			"value": "",
 			"enabled": true
 		}
 	]
